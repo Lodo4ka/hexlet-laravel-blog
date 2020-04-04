@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/about', 'PageController@about');
 Route::get('/articles', 'ArticleController@index');
+Route::get('/articles/{id}', 'ArticleController@show')->name('article.show');
