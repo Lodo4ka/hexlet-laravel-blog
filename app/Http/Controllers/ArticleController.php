@@ -10,7 +10,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::paginate();
-        
+
         return \view('article.index', compact('articles'));
     }
 
@@ -26,7 +26,7 @@ class ArticleController extends Controller
         $article = new Article();
         return view('article.create', compact('article'));
     }
-    
+
     public function store(Request $request)
     {
            // Проверка введённых данных
@@ -42,9 +42,11 @@ class ArticleController extends Controller
         $article->fill($data);
         // При ошибках сохранения возникнет исключение
         $article->save();
-
+        // $request->flash('status', 'Article was created successful!');
+        // $request->session()->flash('status', 'created');
+        $request->session()->reflash();
         // Редирект на указанный маршрут с добавлением флеш-сообщения
         return redirect()
-            ->route('articles.index');
+            ->route('articles.index')->with('success', 'created');
     }
 }

@@ -11,6 +11,7 @@
         <div class="container mt-4">
             <h1>@yield('header')</h1>
             <div>
+                @include('partials.alerts')
                 @yield('content')
             </div>
         </div>
