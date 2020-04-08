@@ -42,9 +42,6 @@ class ArticleController extends Controller
         $article->fill($data);
         // При ошибках сохранения возникнет исключение
         $article->save();
-        // $request->flash('status', 'Article was created successful!');
-        // $request->session()->flash('status', 'created');
-        $request->session()->reflash();
         // Редирект на указанный маршрут с добавлением флеш-сообщения
         return redirect()
             ->route('articles.index')->with('success', 'created');
